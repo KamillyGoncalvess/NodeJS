@@ -30,8 +30,14 @@ container.registerSingleton<IUsersRepository>(
   UsersRepository
 );
 
-container.registerSingleton<ICarsRepository>("CarsRepository", CarsRepository);
+container.registerSingleton<ICarsRepository>(
+  "CarsRepository",
+   CarsRepository);
 
-container.registerSingleton<ICarsImagesRepository>("CarsImagesRepository", CarsImagesRepository);
+container.registerSingleton<ICarsImagesRepository>(
+  "CarsImagesRepository",
+   CarsImagesRepository);
 
-container.registerSingleton<IRentalsRepository>("RentalsRepository", RentalsRepository);
+container.registerSingleton<IRentalsRepository>(
+  "RentalsRepository", 
+  RentalsRepository);

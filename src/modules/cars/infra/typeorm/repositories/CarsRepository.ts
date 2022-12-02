@@ -11,7 +11,7 @@ private repository: Repository<Car>;
   constructor() {
     this.repository = getRepository(Car);
   }
-  
+
   async create({
     brand,
     category_id,
@@ -60,17 +60,27 @@ private repository: Repository<Car>;
       carsQuery.andWhere("name = :name", { name });
     }
     
-  if(category_id) {
-    carsQuery.andWhere("category_id = :category_id", { category_id });
+    if(category_id) {
+      carsQuery.andWhere("category_id = :category_id", { category_id });
     }
     const cars = await carsQuery.getMany();
-
+    
     return cars;
   }
-
+  
   async findById(id: string): Promise<Car> {
     const car = await this.repository.findOne(id);
     return car;
+  }
+
+  async updateAvailable(id: string, available: boolean): Promise<void> {
+    await this.repository
+    .createQueryBuilder()
+    .update()
+    .set({available})
+    .where("id = : id")
+    .setParameters({id})
+    .execute();
   }
 }
 

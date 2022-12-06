@@ -10,7 +10,6 @@ const rentalRoutes = Router();
 
 const createRentalController = new CreateRentalController();
 const devolutionRentalController = new DevolutionRentalController();
-<<<<<<< HEAD
 const listRentalsByUserController = new ListRentalsByUserController();
 
 rentalRoutes.post("/", ensureAuthenticated, createRentalController.handle);
@@ -18,10 +17,5 @@ rentalRoutes.post("/devolution/:id", ensureAuthenticated, devolutionRentalContro
 rentalRoutes.get("/user", ensureAuthenticated, listRentalsByUserController.handle);
 
 export { rentalRoutes };
-=======
 
-rentalRoutes.post("/", ensureAuthenticated, createRentalController.handle);
-rentalRoutes.post("/devolution/:id", ensureAuthenticated, devolutionRentalController.handle);
 
-export { rentalRoutes };
->>>>>>> 5009a8a4440f57c2bd7c73abd01fc02ab5bdebfd

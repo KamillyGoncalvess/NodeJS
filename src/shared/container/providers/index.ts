@@ -27,5 +27,5 @@ const diskStorage = {
 
 container.registerSingleton<IStorageProvider>(
   "StorageProvider",
-  diskStorage[ProcessCredentials.env.disk]
+  diskStorage[process.env.disk]
 )

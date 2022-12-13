@@ -1,17 +1,15 @@
 import { container } from "tsyringe";
-import { IDateProvider } from "../DateProvider/IDateProvider";
-import { DayjsDateProvider } from "../DateProvider/implementations/DayjsDateProvider";
+
 import { IMailProvider } from "./IMailProvider";
 import { EtherealMailProvider } from "./implementations/EtherealMailProvider";
+import { SESMailProvider } from "./implementations/SESMailProvider";
 
-
-
-container.registerSingleton<IDateProvider>(
-  "DayjsDateProvider",
-  DayjsDateProvider
-);
+const mailProvider = {
+  ethereal: container.resolve(EtherealMailProvider),
+  ses: container.resolve(SESMailProvider),
+};
 
 container.registerInstance<IMailProvider>(
-  "EtherealMailProvider",
-  new EtherealMailProvider()
+  "MailProvider",
+  mailProvider[process.env.MAIL_PROVIDER]
 );

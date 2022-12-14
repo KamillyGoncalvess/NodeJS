@@ -22,8 +22,3 @@ services:
 volumes:
   pgdata: 
     driver: local
-
-networks:
-  default:
-    name: network_rentx
-    driver: bridge
